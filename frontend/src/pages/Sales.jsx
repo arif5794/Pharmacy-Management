@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FiPlus } from 'react-icons/fi';
 import '../App.css';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://pharmacy-management-d41i.onrender.com/api';
 
 // Helper function to get YYYY-MM-DD in local system time
 const getLocalDateString = (dateInput = new Date()) => {
