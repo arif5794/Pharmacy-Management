@@ -5,7 +5,15 @@ const pool = require('./config/db');
 
 const app = express();
 
-app.use(cors());
+// =====================================================
+// CORS CONFIGURATION (UPDATED FOR VERCEL DEPLOYMENT)
+// =====================================================
+app.use(cors({
+  origin: '*', // Allows Vercel frontend requests
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-access-token']
+}));
+
 app.use(express.json());
 
 // =====================================================
@@ -347,16 +355,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log('');
-  console.log('╔════════════════════════════════════════╗');
-  console.log('║   🏥 PHARMACY MANAGEMENT SYSTEM        ║');
-  console.log('║   📊 Backend Server Started            ║');
-  console.log('╚════════════════════════════════════════╝');
-  console.log('');
-  console.log(`✅ Server running on: http://localhost:${PORT}`);
-  console.log(`🔗 Test API: http://localhost:${PORT}/api/test`);
-  console.log(`💾 Database: http://localhost:${PORT}/api/health`);
-  console.log(`📦 Products: http://localhost:${PORT}/api/products`);
-  console.log(`🛒 Sales: http://localhost:${PORT}/api/sales`);
-  console.log('');
+  console.log(`✅ Server running on port ${PORT}`);
 });
